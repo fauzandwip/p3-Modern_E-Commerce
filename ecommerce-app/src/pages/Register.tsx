@@ -18,6 +18,9 @@ const Register = () => {
 
 			{/* form */}
 			<div className="w-5/12 p-20">
+				<h1 className="text-4xl font-extrabold w-full text-center tracking-tighter mb-14">
+					REGISTER
+				</h1>
 				<form className="flex flex-col">
 					<div className="flex gap-4">
 						<div className="w-8/12">
@@ -47,7 +50,7 @@ const Register = () => {
 						type="submit"
 						className="focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center bg-orange-600 hover:bg-orange-700 focus:ring-orange-800"
 					>
-						Submit
+						Register
 					</button>
 					<label className="block mt-4 ps-2 text-[12px] text-slate-400 w-full text-center">
 						Already have an account?{' '}

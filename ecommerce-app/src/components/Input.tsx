@@ -17,7 +17,7 @@ const Input = ({ text, type = 'text', id, placeholder }: Props) => {
 			<input
 				type={type}
 				id={id}
-				className="text-sm rounded-lg block w-full p-3 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-slate-500 focus:border-slate-500"
+				className="text-sm rounded-lg block w-full p-4 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-slate-500 focus:border-slate-500"
 				placeholder={placeholder}
 				// placeholder="•••••••••"
 			/>

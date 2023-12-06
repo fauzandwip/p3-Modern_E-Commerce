@@ -1,4 +1,5 @@
 import Input from '@/components/Input';
+import SubmitButton from '@/components/SubmitButton';
 import Link from 'next/link';
 
 const Login = () => {
@@ -13,21 +14,16 @@ const Login = () => {
 					<Input
 						text="Email"
 						id="password-form"
-						placeholder="Your email address"
+						placeholder="jack@gmail.com"
 						type="email"
 					/>
 					<Input
 						text="Password"
 						id="password-form"
-						placeholder="Create a password"
+						placeholder="•••••••••"
 						type="password"
 					/>
-					<button
-						type="submit"
-						className="focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-4 my-4 text-center bg-orange-600 hover:bg-orange-700 focus:ring-orange-800"
-					>
-						Log In
-					</button>
+					<SubmitButton text="Log In" />
 				</form>
 				<p className="block ps-2 text-[12px] text-slate-400 w-full text-center">
 					Don&apos;t have account?{' '}

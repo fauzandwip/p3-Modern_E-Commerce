@@ -1,4 +1,5 @@
 import Input from '@/components/Input';
+import SubmitButton from '@/components/SubmitButton';
 import Link from 'next/link';
 
 const Register = () => {
@@ -46,12 +47,7 @@ const Register = () => {
 						placeholder="Create a password"
 						type="password"
 					/>
-					<button
-						type="submit"
-						className="focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center bg-orange-600 hover:bg-orange-700 focus:ring-orange-800"
-					>
-						Register
-					</button>
+					<SubmitButton text="Register" />
 					<label className="block mt-4 ps-2 text-[12px] text-slate-400 w-full text-center">
 						Already have an account?{' '}
 						<Link href={'/login'} className="text-slate-300 underline">

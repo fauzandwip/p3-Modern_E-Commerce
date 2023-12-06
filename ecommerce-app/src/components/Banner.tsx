@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Banner = () => {
 	return (
-		<div className="h-[60vh] px-16 py-10">
+		<div className="h-[60vh] py-10">
 			<Carousel>
 				<Image
 					src={'/fnatic-two-person.jpeg'}

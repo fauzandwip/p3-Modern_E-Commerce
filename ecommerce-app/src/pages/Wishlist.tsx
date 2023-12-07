@@ -15,7 +15,7 @@ const Wishlist = () => {
 				{arr.map((_, i) => {
 					return (
 						<div key={i} className=" aspect-[1/1.5]">
-							<Card />
+							<Card textBtn={'Remove'} />
 						</div>
 					);
 				})}

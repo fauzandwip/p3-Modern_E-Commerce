@@ -4,11 +4,11 @@ const Navbar = () => {
 	return (
 		<div className="navbar bg-zinc-950">
 			<div className="flex-1">
-				<a className="btn btn-ghost text-xl">E-Commerce</a>
+				<a className="btn btn-ghost text-slate-100 text-xl">E-Commerce</a>
 			</div>
 			<div className="flex-none gap-4">
 				<div role="button" className="btn btn-ghost">
-					<p>product</p>
+					<p className="text-slate-100">product</p>
 				</div>
 				<div className="">
 					<div role="button" className="btn btn-ghost btn-circle">

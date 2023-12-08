@@ -1,8 +1,37 @@
 import Input from '@/components/Input';
 import SubmitButton from '@/components/SubmitButton';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const Login = () => {
+	const handleLogin = async (formData: FormData) => {
+		'use server';
+		const email = formData.get('email');
+		const password = formData.get('password');
+
+		console.log({ email, password });
+		const response = await fetch('http://localhost:3000/api/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email,
+				password,
+			}),
+		});
+
+		const result = await response.json();
+		console.log(response.ok, 'okkk');
+		console.log(result, '>>> login ');
+
+		if (!response.ok) {
+			return redirect('/register?error=' + result.message);
+		}
+
+		return redirect('/');
+	};
+
 	return (
 		<main className="flex bg-gray-900 w-full min-h-screen justify-center items-center">
 			{/* form */}
@@ -14,12 +43,14 @@ const Login = () => {
 					<Input
 						text="Email"
 						id="password-form"
+						name="email"
 						placeholder="jack@gmail.com"
 						type="email"
 					/>
 					<Input
 						text="Password"
 						id="password-form"
+						name="password"
 						placeholder="•••••••••"
 						type="password"
 					/>

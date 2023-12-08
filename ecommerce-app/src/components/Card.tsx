@@ -18,7 +18,7 @@ const Card = ({ textBtn }: Props) => {
 			<div
 				onMouseOver={() => setButtonShow(true)}
 				onMouseLeave={() => setButtonShow(false)}
-				className="rounded-md w-full h-5/6 p-4 flex flex-col justify-end items-center bg-[url('https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=contain,format=auto,width=1536/https://cdn.sanity.io/images/5gii1snx/production/2bff446bc5a5b2770836f239421af736bde1e54c-8736x11648.jpg')] bg-cover bg-red-500"
+				className="rounded-md w-full h-5/6 p-4 flex flex-col justify-end items-center bg-[url('https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=contain,format=auto,width=1536/https://cdn.sanity.io/images/5gii1snx/production/2bff446bc5a5b2770836f239421af736bde1e54c-8736x11648.jpg')] bg-cover"
 			>
 				<ButtonWishlist show={buttonShow} text={textBtn} />
 			</div>

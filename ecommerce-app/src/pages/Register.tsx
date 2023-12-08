@@ -1,8 +1,41 @@
 import Input from '@/components/Input';
 import SubmitButton from '@/components/SubmitButton';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const Register = () => {
+	const handleRegister = async (formData: FormData) => {
+		'use server';
+		const name = formData.get('name');
+		const username = formData.get('username');
+		const email = formData.get('email');
+		const password = formData.get('password');
+
+		console.log({ name, username, email, password });
+		const response = await fetch('http://localhost:3000/api/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'applicaiton/json',
+			},
+			body: JSON.stringify({
+				name,
+				username,
+				email,
+				password,
+			}),
+		});
+
+		const result = await response.json();
+		console.log(response.ok, 'okkk');
+		console.log(result);
+
+		if (!response.ok) {
+			return redirect('/register?error=' + result.message);
+		}
+
+		return redirect('/login');
+	};
+
 	return (
 		<main className="flex bg-gray-900 w-full min-h-screen justify-center items-center">
 			<div className="flex justify-start items-start ps-16 w-7/12">
@@ -22,28 +55,36 @@ const Register = () => {
 				<h1 className="text-4xl font-extrabold w-full text-center tracking-tighter mb-14">
 					REGISTER
 				</h1>
-				<form className="flex flex-col">
+				<form className="flex flex-col" action={handleRegister}>
 					<div className="flex gap-4">
 						<div className="w-8/12">
-							<Input text="Name" id="name-form" placeholder="Fullname" />
+							<Input
+								text="Name"
+								id="name-form"
+								name="name"
+								placeholder="Fullname"
+							/>
 						</div>
 						<div className="w-4/12">
 							<Input
 								text="Username"
 								id="username-form"
+								name="username"
 								placeholder="Username"
 							/>
 						</div>
 					</div>
 					<Input
 						text="Email"
-						id="password-form"
+						id="email-form"
+						name="email"
 						placeholder="Your email address"
 						type="email"
 					/>
 					<Input
 						text="Password"
 						id="password-form"
+						name="password"
 						placeholder="Create a password"
 						type="password"
 					/>

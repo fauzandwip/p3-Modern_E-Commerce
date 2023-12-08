@@ -1,5 +1,7 @@
+import { hashText } from '@/db/helpers/hash';
 import {
 	UserInput,
+	UserModel,
 	createUser,
 	getUserByEmailOrUsername,
 } from '@/db/models/user';
@@ -26,7 +28,7 @@ export async function POST(req: Request) {
 			throw validation.error;
 		}
 
-		const user = await getUserByEmailOrUsername(body.email, body.username);
+		const user: UserModel = await getUserByEmailOrUsername(body.email);
 
 		if (user) {
 			if (user.email) {
@@ -55,7 +57,7 @@ export async function POST(req: Request) {
 			name: body.name,
 			username: body.username,
 			email: body.email,
-			password: body.password,
+			password: hashText(body.password),
 		});
 
 		return NextResponse.json(

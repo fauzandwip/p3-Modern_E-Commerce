@@ -8,7 +8,7 @@ export interface UserInput {
 	password: string;
 }
 
-export interface User extends UserInput {
+export interface UserModel extends UserInput {
 	_id: ObjectId;
 }
 
@@ -31,13 +31,12 @@ export const getUserById = async (id: string): Promise<UserResponse> => {
 };
 
 export const getUserByEmailOrUsername = async (
-	email: string,
-	username?: string
-): Promise<UserResponse> => {
+	input: string
+): Promise<UserModel> => {
 	const db = await getDB();
 	const user = (await db
 		.collection('Users')
-		.findOne({ $or: [{ email }, { username }] })) as UserResponse;
+		.findOne({ $or: [{ email: input }, { username: input }] })) as UserModel;
 
 	return user;
 };

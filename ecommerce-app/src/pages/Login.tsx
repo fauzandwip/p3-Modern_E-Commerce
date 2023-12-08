@@ -26,7 +26,7 @@ const Login = () => {
 		console.log(result, '>>> login ');
 
 		if (!response.ok) {
-			return redirect('/register?error=' + result.message);
+			return redirect('/login?error=' + result.message);
 		}
 
 		return redirect('/');
@@ -39,7 +39,7 @@ const Login = () => {
 				<h1 className="text-4xl font-extrabold tracking-tighter mb-10">
 					LOGIN
 				</h1>
-				<form className="flex flex-col w-full">
+				<form className="flex flex-col w-full" action={handleLogin}>
 					<Input
 						text="Email"
 						id="password-form"

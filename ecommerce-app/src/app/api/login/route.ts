@@ -1,7 +1,8 @@
+import { compareTextWithHash } from '@/db/helpers/hash';
+import { signToken } from '@/lib/jwt';
 import {
+	UserModel,
 	UserInput,
-	UserResponse,
-	createUser,
 	getUserByEmailOrUsername,
 } from '@/db/models/user';
 import { NextResponse } from 'next/server';
@@ -17,7 +18,7 @@ const User = z.object({
 
 export async function POST(req: Request) {
 	try {
-		console.log('>>> post register triggered');
+		console.log('>>> POST login triggered');
 		const body: UserInput = await req.json();
 		const validation = User.safeParse(body);
 
@@ -26,9 +27,11 @@ export async function POST(req: Request) {
 			throw validation.error;
 		}
 
-		const user: UserResponse = await getUserByEmailOrUsername(body.email);
+		console.log(body, '>>> input');
 
-		if (!user) {
+		const user: UserModel = await getUserByEmailOrUsername(body.email);
+
+		if (!user || !compareTextWithHash(body.password, user.password)) {
 			return NextResponse.json(
 				{
 					message: 'Invalid email/password',
@@ -39,12 +42,16 @@ export async function POST(req: Request) {
 			);
 		}
 
+		const access_token = signToken({ id: user._id, email: user.email });
 		return NextResponse.json(
 			{
 				message: 'Success Login',
+				data: {
+					access_token,
+				},
 			},
 			{
-				status: 201,
+				status: 202,
 			}
 		);
 	} catch (error) {

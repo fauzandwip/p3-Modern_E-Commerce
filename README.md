@@ -1,4 +1,5 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=13148318&assignment_repo_type=AssignmentRepo)
+
 # My eCommerce App
 
 ## Tujuan Pembelajaran
@@ -23,31 +24,31 @@ Pada challenge ini, kamu diminta untuk membuat aplikasi client-server dengan det
 
 ### Halaman
 
-- [ ] Halaman Register
-- [ ] Halaman Login
+- [x] Halaman Register
+- [x] Halaman Login
 - [ ] Halaman Home
   - [ ] Banner Promo
-  - [ ] Detail info Ecommerce
-  - [ ] Featured Product (5-10 product) + “see-all”
+  - [x] Detail info Ecommerce
+  - [x] Featured Product (5-10 product) + “see-all”
 - [ ] Halaman Product
-- [ ] List Product
-  - [ ] Fitur Search
-  - [ ] Fitur Pagination (menggunakan infinite scroll)
-  - [ ] Fitur Add to wishlist
+- [x] List Product
+  - [x] Fitur Search
+  - [x] Fitur Pagination (menggunakan infinite scroll)
+  - [x] Fitur Add to wishlist
 - [ ] Halaman Detail Product
   - [ ] Fitur Add to wishlist
   - [ ] Implementasi Meta Tag di Head sesuai detail product
-- [ ] Halaman Wishlist Product
-  - [ ] List Wishlist
-  - [ ] Fitur Remove Wishlist
+- [x] Halaman Wishlist Product
+  - [x] List Wishlist
+  - [x] Fitur Remove Wishlist
 
 ### Fitur
 
-- [ ] Fitur register
-- [ ] Fitur login
-- [ ] Fitur show list product
+- [x] Fitur register
+- [x] Fitur login
+- [x] Fitur show list product
 - [ ] Fitur show detail product
-- [ ] Fitur add to wishlist
-- [ ] Fitur remove wishlist
+- [x] Fitur add to wishlist
+- [x] Fitur remove wishlist
 - [ ] Fitur search product berdasarkan nama (implement menerapkan debounce)
 - [ ] Fitur pagination (implement infinite scroll)

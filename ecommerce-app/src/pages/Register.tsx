@@ -3,6 +3,11 @@ import SubmitButton from '@/components/SubmitButton';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
+export type AuthResponse<T = {}> = {
+	message?: string;
+	data?: T;
+};
+
 const Register = () => {
 	const handleRegister = async (formData: FormData) => {
 		'use server';
@@ -25,7 +30,7 @@ const Register = () => {
 			}),
 		});
 
-		const result = await response.json();
+		const result = (await response.json()) as AuthResponse;
 		console.log(response.ok, 'okkk');
 		console.log(result);
 

@@ -43,7 +43,7 @@ export async function POST(req: Request) {
 		}
 
 		const access_token = signToken({ id: user._id, email: user.email });
-		return NextResponse.json(
+		const response = NextResponse.json(
 			{
 				message: 'Success Login',
 				data: {
@@ -51,9 +51,12 @@ export async function POST(req: Request) {
 				},
 			},
 			{
-				status: 202,
+				status: 200,
 			}
 		);
+
+		response.cookies.set('Authorization', `Bearer ${access_token}`);
+		return response;
 	} catch (error) {
 		// console.log(error, 'erorrrr');
 		if (error instanceof ZodError) {

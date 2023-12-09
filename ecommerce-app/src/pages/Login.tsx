@@ -2,6 +2,8 @@ import Input from '@/components/Input';
 import SubmitButton from '@/components/SubmitButton';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
+import { AuthResponse } from './Register';
 
 const Login = () => {
 	const handleLogin = async (formData: FormData) => {
@@ -21,13 +23,18 @@ const Login = () => {
 			}),
 		});
 
-		const result = await response.json();
+		const result = (await response.json()) as AuthResponse<{
+			access_token: string;
+		}>;
 		console.log(response.ok, 'okkk');
 		console.log(result, '>>> login ');
 
 		if (!response.ok) {
 			return redirect('/login?error=' + result.message);
 		}
+
+		if (result.data)
+			cookies().set('Authorization', `Bearer ${result.data.access_token}`);
 
 		return redirect('/');
 	};
@@ -42,7 +49,7 @@ const Login = () => {
 				<form className="flex flex-col w-full" action={handleLogin}>
 					<Input
 						text="Email"
-						id="password-form"
+						id="email-form"
 						name="email"
 						placeholder="jack@gmail.com"
 						type="email"

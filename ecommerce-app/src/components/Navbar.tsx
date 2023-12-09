@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import LogoutAction from '../action/auth';
 
 const Navbar = () => {
 	return (
@@ -53,7 +56,7 @@ const Navbar = () => {
 						<li>
 							<a>Settings</a>
 						</li>
-						<li>
+						<li onClick={() => LogoutAction()}>
 							<a>Logout</a>
 						</li>
 					</ul>

@@ -5,6 +5,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
 	try {
 		const products: Product[] = await getAllProduct();
+		console.log('>>> GET products tigerr');
 
 		return NextResponse.json({
 			message: 'Get All Product',

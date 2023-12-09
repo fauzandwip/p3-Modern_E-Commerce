@@ -27,7 +27,11 @@ const Wishlist = async () => {
 				{wishlist?.data?.map((data: WishlistModel) => {
 					return (
 						<div key={data?._id.toString()} className=" aspect-[1/1.3]">
-							<Card textBtn={'Remove'} data={data?.product} />
+							<Card
+								action="remove"
+								data={data?.product}
+								wishlistId={data?._id.toString()}
+							/>
 						</div>
 					);
 				})}

@@ -29,7 +29,7 @@ const Products = async () => {
 				{products?.data?.map((data: Product) => {
 					return (
 						<div key={data._id.toString()} className=" aspect-[1/1.3]">
-							<Card textBtn={'Add to Wishlist'} data={data} />
+							<Card action="add" data={data} />
 						</div>
 					);
 				})}

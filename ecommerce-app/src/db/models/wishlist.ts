@@ -26,6 +26,16 @@ export const addWishlist = async (data: NewWishlist) => {
 	return response;
 };
 
+export const deleteWishlist = async (id: string) => {
+	const db = await getDB();
+	const response = await db
+		.collection('Wishlist')
+		.deleteOne({ _id: new ObjectId(id) });
+	// console.log(response, 'response delete');
+
+	return response;
+};
+
 export const getWishlist = async (userId: string): Promise<WishlistModel[]> => {
 	const db = await getDB();
 	const response = (await db

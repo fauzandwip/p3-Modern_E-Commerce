@@ -5,13 +5,15 @@ import ButtonWishlist from './ButtonWishlist';
 import { Product } from '@/db/models/products';
 import Image from 'next/image';
 import { cookies } from 'next/headers';
+import { useRouter } from 'next/navigation';
 
 type Props = {
-	textBtn: string;
+	action: 'remove' | 'add';
 	data: Product;
+	wishlistId?: string;
 };
 
-const Card = ({ textBtn, data }: Props) => {
+const Card = ({ action, data, wishlistId }: Props) => {
 	// console.log(data.thumbnail);
 	// console.log(`bg-[url('${data?.thumbnail ?? ''}')]`);
 
@@ -19,6 +21,7 @@ const Card = ({ textBtn, data }: Props) => {
 	// https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=contain,format=auto,height=3200,width=1536,trim=266;0;267;0/https://cdn.sanity.io/images/5gii1snx/production/58717b85213e0cbf8f8b1663204eeb6bb2b60c5c-1600x1600.png
 	// https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=contain,format=auto,width=1536/https://cdn.sanity.io/images/5gii1snx/production/2bff446bc5a5b2770836f239421af736bde1e54c-8736x11648.jpg
 	const [buttonShow, setButtonShow] = useState(false);
+	const router = useRouter();
 
 	const onAddWishlist = async () => {
 		console.log('add wishlist');
@@ -29,7 +32,22 @@ const Card = ({ textBtn, data }: Props) => {
 				method: 'POST',
 			}
 		);
-		// console.log(await response.json());
+		console.log(await response.json());
+	};
+
+	const onRemoveWishlist = async () => {
+		console.log('delete wishlist');
+
+		// console.log(data);
+		const response = await fetch(
+			`http://localhost:3000/api/wishlist/${wishlistId}`,
+			{
+				method: 'DELETE',
+			}
+		);
+
+		console.log(await response.json(), 'DELETE WISHLIST handler');
+		router.refresh();
 	};
 
 	return (
@@ -48,8 +66,8 @@ const Card = ({ textBtn, data }: Props) => {
 				/>
 				<ButtonWishlist
 					show={buttonShow}
-					text={textBtn}
-					onClick={onAddWishlist}
+					text={action === 'add' ? 'Add to Wishlist' : 'Remove'}
+					onClick={action === 'add' ? onAddWishlist : onRemoveWishlist}
 				/>
 			</div>
 			<div

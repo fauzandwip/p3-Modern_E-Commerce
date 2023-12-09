@@ -1,14 +1,19 @@
 import { Product, getProductById } from '@/db/models/products';
-import { addWishlist } from '@/db/models/wishlist';
+import {
+	WishlistModel,
+	addWishlist,
+	deleteWishlist,
+	getWishlist,
+} from '@/db/models/wishlist';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(
 	req: Request,
-	{ params }: { params: { productId: string } }
+	{ params }: { params: { id: string } }
 ) {
 	try {
 		console.log(params, '>>> params POST add wishlist');
-		const { productId } = params;
+		const { id: productId } = params;
 		// console.log(productId, '>>> productId wishlist');
 		const product: Product = await getProductById(productId);
 
@@ -32,6 +37,40 @@ export async function POST(
 		return NextResponse.json(
 			{
 				message: 'Success add to wishlist',
+			},
+			{
+				status: 201,
+			}
+		);
+	} catch (error) {
+		return NextResponse.json(
+			{
+				message: 'Internal Server Error',
+			},
+			{
+				status: 500,
+			}
+		);
+	}
+}
+
+export async function DELETE(
+	req: Request,
+	{ params }: { params: { id: string } }
+) {
+	try {
+		console.log(params, '>>> params DELETE wishlist');
+		const { id } = params;
+		console.log(id, '>>> id delete wishlist');
+
+		const userId = req.headers.get('x-user-id') as string;
+		// console.log(userId, 'userId wishlist');
+
+		await deleteWishlist(id);
+
+		return NextResponse.json(
+			{
+				message: 'Success to delete wishlist',
 			},
 			{
 				status: 201,

@@ -1,4 +1,3 @@
-import { ProductResponse } from './../../../db/models/products';
 import { Product, getAllProduct } from '@/db/models/products';
 import { NextResponse } from 'next/server';
 

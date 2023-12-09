@@ -4,6 +4,7 @@ import { useState } from 'react';
 import ButtonWishlist from './ButtonWishlist';
 import { Product } from '@/db/models/products';
 import Image from 'next/image';
+import { cookies } from 'next/headers';
 
 type Props = {
 	textBtn: string;
@@ -19,6 +20,18 @@ const Card = ({ textBtn, data }: Props) => {
 	// https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=contain,format=auto,width=1536/https://cdn.sanity.io/images/5gii1snx/production/2bff446bc5a5b2770836f239421af736bde1e54c-8736x11648.jpg
 	const [buttonShow, setButtonShow] = useState(false);
 
+	const onAddWishlist = async () => {
+		console.log('add wishlist');
+
+		const response = await fetch(
+			`http://localhost:3000/api/wishlist/${data?._id}`,
+			{
+				method: 'POST',
+			}
+		);
+		// console.log(await response.json());
+	};
+
 	return (
 		<div className="w-full h-full flex flex-col">
 			<div
@@ -33,7 +46,11 @@ const Card = ({ textBtn, data }: Props) => {
 					height={400}
 					className="w-full h-full rounded-md top-0 left-0 absolute"
 				/>
-				<ButtonWishlist show={buttonShow} text={textBtn} />
+				<ButtonWishlist
+					show={buttonShow}
+					text={textBtn}
+					onClick={onAddWishlist}
+				/>
 			</div>
 			<div
 				className={`flex-1 from-zinc-950/80 from-0% to-50% flex flex-col w-full pt-2`}

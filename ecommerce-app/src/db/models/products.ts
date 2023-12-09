@@ -29,3 +29,13 @@ export const getAllProduct = async (): Promise<Product[]> => {
 		.toArray()) as Product[];
 	return products;
 };
+
+export const getProductById = async (id: string): Promise<Product> => {
+	console.log('>>> trigerr get productById mongodb');
+
+	const db = await getDB();
+	const products = (await db
+		.collection('Products')
+		.findOne({ _id: new ObjectId(id) })) as Product;
+	return products;
+};

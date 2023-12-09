@@ -14,6 +14,7 @@ const Login = () => {
 		console.log({ email, password });
 		const response = await fetch('http://localhost:3000/api/login', {
 			method: 'POST',
+			cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json',
 			},

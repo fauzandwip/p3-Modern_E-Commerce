@@ -42,7 +42,7 @@ export async function POST(req: Request) {
 			);
 		}
 
-		const access_token = signToken({ id: user._id, email: user.email });
+		const access_token = signToken({ _id: user._id, email: user.email });
 		const response = NextResponse.json(
 			{
 				message: 'Success Login',

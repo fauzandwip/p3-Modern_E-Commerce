@@ -11,5 +11,6 @@ export const signToken = (payload: JwtPayload) => {
 export const readPayloadJose = async <T>(token: string): Promise<T> => {
 	const secret = new TextEncoder().encode(SECRET_KEY);
 	const { payload } = await jose.jwtVerify<T>(token, secret);
+
 	return payload;
 };

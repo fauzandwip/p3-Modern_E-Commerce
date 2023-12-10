@@ -26,24 +26,18 @@ const Card = ({ action, data, wishlistId }: Props) => {
 		console.log('add wishlist');
 		e.stopPropagation();
 
-		const response = await fetch(
-			`http://localhost:3000/api/wishlist/${data?._id}`,
-			{
-				method: 'POST',
-			}
-		);
+		const response = await fetch(`/api/wishlist/${data?._id}`, {
+			method: 'POST',
+		});
 		console.log(await response.json());
 	};
 
 	const onRemoveWishlist = async (e: MouseEvent) => {
 		console.log('delete wishlist');
 		e.stopPropagation();
-		const response = await fetch(
-			`http://localhost:3000/api/wishlist/${wishlistId}`,
-			{
-				method: 'DELETE',
-			}
-		);
+		const response = await fetch(`/api/wishlist/${wishlistId}`, {
+			method: 'DELETE',
+		});
 
 		console.log(await response.json(), 'DELETE WISHLIST handler');
 		router.refresh();

@@ -5,9 +5,15 @@ export async function GET(req: NextRequest) {
 	try {
 		const searchParams = req.nextUrl.searchParams;
 		const search = searchParams.get('search') as string;
-		console.log(search, '>>> query search');
+		const skip = searchParams.get('skip') as string;
+		const limit = searchParams.get('limit') as string;
+		console.log(search, limit, skip, '>>> query search');
 
-		const products: Product[] = await getAllProduct(search);
+		const products: Product[] = await getAllProduct(
+			search,
+			Number(skip),
+			Number(limit)
+		);
 		console.log('>>> GET products tigerr');
 
 		return NextResponse.json({

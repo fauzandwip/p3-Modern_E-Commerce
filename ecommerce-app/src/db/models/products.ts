@@ -19,15 +19,27 @@ export interface ProductResponse extends Omit<Product, '_id'> {
 	_id: string;
 }
 
-export const getAllProduct = async (search: string): Promise<Product[]> => {
+export const getAllProduct = async (
+	search: string,
+	skip: number,
+	limit: number
+): Promise<Product[]> => {
 	console.log(search, '>>> trigerr get all mongodb');
 
 	const db = await getDB();
 	const products = (await db
 		.collection('Products')
-		.find({
-			name: { $regex: search, $options: 'i' },
-		})
+		.aggregate([
+			{
+				$match: { name: { $regex: search, $options: 'i' } },
+			},
+			{
+				$skip: skip,
+			},
+			{
+				$limit: limit,
+			},
+		])
 		.toArray()) as Product[];
 	return products;
 };

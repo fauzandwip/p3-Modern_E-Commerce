@@ -14,7 +14,7 @@ const Navbar = () => {
 				{/* <Link href={'/products'}> */}
 				<a href="/products">
 					<div role="button" className="btn btn-ghost">
-						<p className="text-slate-100">product</p>
+						<p className="text-slate-100">Product</p>
 					</div>
 				</a>
 				{/* </Link> */}
@@ -60,9 +60,9 @@ const Navbar = () => {
 								<span className="badge">New</span>
 							</a>
 						</li> */}
-						<li>
+						{/* <li>
 							<a>Wishlist</a>
-						</li>
+						</li> */}
 						<li onClick={() => LogoutAction()}>
 							<a>Logout</a>
 						</li>

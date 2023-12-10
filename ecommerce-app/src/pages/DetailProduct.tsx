@@ -14,12 +14,9 @@ const DetailProduct = ({ product }: { product: Product }) => {
 		console.log('add wishlist');
 		e.stopPropagation();
 
-		const response = await fetch(
-			`http://localhost:3000/api/wishlist/${product?._id}`,
-			{
-				method: 'POST',
-			}
-		);
+		const response = await fetch(`/api/wishlist/${product?._id}`, {
+			method: 'POST',
+		});
 		console.log(await response.json());
 	};
 

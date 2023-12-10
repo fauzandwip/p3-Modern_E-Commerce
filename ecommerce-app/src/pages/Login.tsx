@@ -12,7 +12,7 @@ const Login = () => {
 		const password = formData.get('password');
 
 		console.log({ email, password });
-		const response = await fetch('http://localhost:3000/api/login', {
+		const response = await fetch(process.env.BASE_URL + '/api/login', {
 			method: 'POST',
 			cache: 'no-cache',
 			headers: {

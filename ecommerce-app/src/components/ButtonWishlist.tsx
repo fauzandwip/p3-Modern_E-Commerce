@@ -3,7 +3,7 @@ import { MouseEvent } from 'react';
 type Props = {
 	show: boolean;
 	text: string;
-	onClick: (e: MouseEvent) => void;
+	onClick: (e: MouseEvent) => Promise<void>;
 };
 
 const ButtonWishlist = ({ show, text, onClick }: Props) => {

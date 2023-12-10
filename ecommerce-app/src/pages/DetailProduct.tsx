@@ -1,25 +1,27 @@
+'use client';
+
+import ButtonWishlist from '@/components/ButtonWishlist';
 import { Product } from '@/db/models/products';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
+import { MouseEvent } from 'react';
 // import { useState } from 'react';
 
-const getDetailProduct = async (slug: string): Promise<Product> => {
-	const response = await fetch(process.env.BASE_URL + '/api/products/' + slug, {
-		method: 'GET',
-		headers: {
-			Cookie: cookies().toString(),
-		},
-	});
-
-	// console.log(await response.json(), '>>> response detail product');
-	const { data } = await response.json();
-	return data;
-};
-
-const DetailProduct = async ({ slug }: { slug: string }) => {
-	const product: Product = await getDetailProduct(slug);
-
+const DetailProduct = ({ product }: { product: Product }) => {
 	// const [primaryImage, setPrimaryImage] = useState('');
+
+	const onAddWishlist = async (e: MouseEvent) => {
+		console.log('add wishlist');
+		e.stopPropagation();
+
+		const response = await fetch(
+			`http://localhost:3000/api/wishlist/${product?._id}`,
+			{
+				method: 'POST',
+			}
+		);
+		console.log(await response.json());
+	};
 
 	return (
 		<div className="flex flex-row w-full h-screen pt-28 gap-20 pb-10 px-14">
@@ -58,7 +60,10 @@ const DetailProduct = async ({ slug }: { slug: string }) => {
 					<h1 className="text-lg font-bold mb-2">Description</h1>
 					<p className="text-sm leading-6">{product?.description}</p>
 				</div>
-				<button className="w-full py-4 text-slate-900 bg-slate-100 text-sm font-medium rounded-lg mt-20">
+				<button
+					onClick={onAddWishlist}
+					className="w-full py-4 text-slate-900 bg-slate-100 text-sm font-medium rounded-lg mt-20"
+				>
 					Add To Wishlist
 				</button>
 			</div>

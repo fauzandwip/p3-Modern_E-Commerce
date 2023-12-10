@@ -1,4 +1,5 @@
 import Input from '@/components/Input';
+import ShopInformation from '@/components/ShopInformation';
 import SubmitButton from '@/components/SubmitButton';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -44,14 +45,8 @@ const Register = ({ errorMessage }: { errorMessage: string }) => {
 	return (
 		<main className="flex bg-gray-900 w-full min-h-screen justify-center items-center">
 			<div className="flex justify-start items-start ps-16 w-7/12">
-				<div className="py-8 px-4 text-left lg:py-16 w-3/4">
-					<h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white">
-						We invest in the world’s potential
-					</h1>
-					<p className="mb-8 text-lg font-normal lg:text-xl text-gray-400">
-						Here at Flowbite we focus on markets where technology, innovation,
-						and capital can unlock long-term value and drive economic growth.
-					</p>
+				<div className="w-3/4">
+					<ShopInformation />
 				</div>
 			</div>
 

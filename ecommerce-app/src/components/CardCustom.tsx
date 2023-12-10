@@ -4,6 +4,8 @@ import { Product } from '@/db/models/products';
 import { useRouter } from 'next/navigation';
 import { MouseEvent } from 'react';
 import { ProductDummy } from './CardList';
+import { isLogin } from '@/action/auth';
+import { toast } from 'react-toastify';
 
 type Props = {
 	position?: string;
@@ -20,10 +22,18 @@ const CardCustom = ({
 		console.log('add wishlist');
 		e.stopPropagation();
 
+		if (!isLogin()) return router.push('/login');
 		const response = await fetch(`/api/wishlist/${data?._id.toString()}`, {
 			method: 'POST',
 		});
-		console.log(await response.json());
+
+		const { message } = await response.json();
+
+		if (message === 'Unauthenticated') {
+			toast.error('Log In First');
+		} else {
+			toast.success(message);
+		}
 	};
 
 	return (

@@ -5,6 +5,7 @@ import ButtonWishlist from './ButtonWishlist';
 import { Product } from '@/db/models/products';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 type Props = {
 	action: 'remove' | 'add';
@@ -23,7 +24,14 @@ const Card = ({ action, data, wishlistId }: Props) => {
 		const response = await fetch(`/api/wishlist/${data?._id}`, {
 			method: 'POST',
 		});
-		console.log(await response.json());
+
+		const { message } = await response.json();
+
+		if (message === 'Unauthenticated') {
+			toast.error('Log In First');
+		} else {
+			toast.success(message);
+		}
 	};
 
 	const onRemoveWishlist = async (e: MouseEvent) => {
@@ -33,7 +41,15 @@ const Card = ({ action, data, wishlistId }: Props) => {
 			method: 'DELETE',
 		});
 
-		console.log(await response.json(), 'DELETE WISHLIST handler');
+		// console.log(await response.json(), 'DELETE WISHLIST handler');
+		const { message } = await response.json();
+
+		if (message === 'Unauthenticated') {
+			toast.error('Log In First');
+		} else {
+			toast.success(message);
+		}
+
 		router.refresh();
 	};
 

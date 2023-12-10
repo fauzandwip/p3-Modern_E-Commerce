@@ -4,7 +4,7 @@ import LogoutButton from './LogoutButton';
 
 const Navbar = () => {
 	return (
-		<div className="navbar bg-zinc-950 fixed z-10">
+		<div className="navbar bg-zinc-950 fixed z-20">
 			<div className="flex-1">
 				<a className="text-slate-100 text-xl px-4 cursor-pointer" href="/">
 					E-Commerce

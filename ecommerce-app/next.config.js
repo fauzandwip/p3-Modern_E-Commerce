@@ -10,6 +10,10 @@ const nextConfig = {
 				protocol: 'https',
 				hostname: 'cf-img.fnatic.com',
 			},
+			{
+				protocol: 'https',
+				hostname: 'source.unsplash.com',
+			},
 		],
 	},
 };

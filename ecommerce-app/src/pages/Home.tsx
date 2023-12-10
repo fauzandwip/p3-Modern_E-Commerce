@@ -1,5 +1,6 @@
 import Banner from '@/components/Banner';
 import CardList from '@/components/CardList';
+import SeeAllButton from '@/components/SeeAllButton';
 import ShopInformation from '@/components/ShopInformation';
 
 const Home = () => {
@@ -14,6 +15,9 @@ const Home = () => {
 				</div>
 			</div>
 			<CardList />
+			<div className="w-full my-6 text-center">
+				<SeeAllButton />
+			</div>
 		</div>
 	);
 };

@@ -8,8 +8,10 @@ type ProtectedProps = {
 
 const ServerProtectedComponent = ({ children }: ProtectedProps) => {
 	const token = cookies().get('Authorization');
+	console.log(token, '>>> protected');
+
 	if (!token) {
-		redirect('/login');
+		return redirect('/login');
 	}
 
 	return <>{children}</>;

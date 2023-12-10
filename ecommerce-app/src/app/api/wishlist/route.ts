@@ -1,4 +1,4 @@
-import { WishlistModel, getWishlist } from '@/db/models/wishlist';
+import { WishlistModel, getWishlists } from '@/db/models/wishlist';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
@@ -8,7 +8,7 @@ export async function GET(req: Request) {
 		const userId = req.headers.get('x-user-id') as string;
 		console.log(userId, 'userId wishlist');
 
-		const wishlist: WishlistModel[] = await getWishlist(userId);
+		const wishlist: WishlistModel[] = await getWishlists(userId);
 		// console.log(wishlist, '>>> wishlist route');
 
 		return NextResponse.json(

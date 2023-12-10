@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import ButtonWishlist from './ButtonWishlist';
 import { Product } from '@/db/models/products';
 import Image from 'next/image';
-import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 type Props = {
 	action: 'remove' | 'add';
@@ -14,44 +14,50 @@ type Props = {
 };
 
 const Card = ({ action, data, wishlistId }: Props) => {
-	// console.log(data.thumbnail);
-	// console.log(`bg-[url('${data?.thumbnail ?? ''}')]`);
-
-	// https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=cover,format=auto,width=1536/https://cdn.sanity.io/images/5gii1snx/production/a701a722e980747af20c8fe67f94370116c7cd19-750x1200.jpg
-	// https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=contain,format=auto,height=3200,width=1536,trim=266;0;267;0/https://cdn.sanity.io/images/5gii1snx/production/58717b85213e0cbf8f8b1663204eeb6bb2b60c5c-1600x1600.png
-	// https://cf-img.fnatic.com/cdn-cgi/image/dpr=1,fit=contain,format=auto,width=1536/https://cdn.sanity.io/images/5gii1snx/production/2bff446bc5a5b2770836f239421af736bde1e54c-8736x11648.jpg
 	const [buttonShow, setButtonShow] = useState(false);
 	const router = useRouter();
 
-	const onAddWishlist = async () => {
+	const onAddWishlist = async (e: MouseEvent) => {
 		console.log('add wishlist');
+		e.stopPropagation();
 
-		const response = await fetch(
-			`http://localhost:3000/api/wishlist/${data?._id}`,
-			{
-				method: 'POST',
-			}
-		);
-		console.log(await response.json());
+		const response = await fetch(`/api/wishlist/${data?._id}`, {
+			method: 'POST',
+		});
+
+		const { message } = await response.json();
+
+		if (message === 'Unauthenticated') {
+			toast.error('Log In First');
+		} else {
+			toast.success(message);
+		}
 	};
 
-	const onRemoveWishlist = async () => {
+	const onRemoveWishlist = async (e: MouseEvent) => {
 		console.log('delete wishlist');
+		e.stopPropagation();
+		const response = await fetch(`/api/wishlist/${wishlistId}`, {
+			method: 'DELETE',
+		});
 
-		// console.log(data);
-		const response = await fetch(
-			`http://localhost:3000/api/wishlist/${wishlistId}`,
-			{
-				method: 'DELETE',
-			}
-		);
+		// console.log(await response.json(), 'DELETE WISHLIST handler');
+		const { message } = await response.json();
 
-		console.log(await response.json(), 'DELETE WISHLIST handler');
+		if (message === 'Unauthenticated') {
+			toast.error('Log In First');
+		} else {
+			toast.success(message);
+		}
+
 		router.refresh();
 	};
 
 	return (
-		<div className="w-full h-full flex flex-col">
+		<div
+			onClick={() => router.push(`/products/${data?.slug}`)}
+			className="w-full h-full flex flex-col cursor-pointer"
+		>
 			<div
 				onMouseOver={() => setButtonShow(true)}
 				onMouseLeave={() => setButtonShow(false)}

@@ -19,7 +19,7 @@ const Wishlist = async () => {
 	// console.log(wishlist, 'wishlist component');
 
 	return (
-		<div className="w-full min-h-screen h-full bg-zinc-950 flex flex-col gap-10 justify-start items-start py-10 px-16">
+		<div className="w-full min-h-screen h-full bg-zinc-950 flex flex-col gap-10 justify-start items-start py-10 px-16 pt-24">
 			<div>
 				<h1 className="text-4xl font-extrabold">Wishlist</h1>
 			</div>

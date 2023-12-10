@@ -31,6 +31,18 @@ export async function POST(
 		const userId = req.headers.get('x-user-id') as string;
 		// console.log(req.headers, 'userId wishlist');
 		// console.log(userId, 'userId wishlist');
+		const wishlistProduct = await getWishlist(productId, userId);
+
+		if (wishlistProduct) {
+			return NextResponse.json(
+				{
+					message: 'Wishlist has been added',
+				},
+				{
+					status: 400,
+				}
+			);
+		}
 
 		await addWishlist({ productId, userId });
 

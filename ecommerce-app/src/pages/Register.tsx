@@ -8,7 +8,7 @@ export type AuthResponse<T = {}> = {
 	data?: T;
 };
 
-const Register = () => {
+const Register = ({ errorMessage }: { errorMessage: string }) => {
 	const handleRegister = async (formData: FormData) => {
 		'use server';
 		const name = formData.get('name');
@@ -93,6 +93,11 @@ const Register = () => {
 						placeholder="Create a password"
 						type="password"
 					/>
+					{errorMessage && (
+						<p className=" text-center mt-2 text-sm text-red-500">
+							{errorMessage}
+						</p>
+					)}
 					<SubmitButton text="Register" />
 					<label className="block mt-4 ps-2 text-[12px] text-slate-400 w-full text-center">
 						Already have an account?{' '}

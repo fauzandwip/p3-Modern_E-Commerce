@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { AuthResponse } from './Register';
 
-const Login = () => {
+const Login = ({ errorMessage }: { errorMessage: string }) => {
 	const handleLogin = async (formData: FormData) => {
 		'use server';
 		const email = formData.get('email');
@@ -62,6 +62,11 @@ const Login = () => {
 						placeholder="•••••••••"
 						type="password"
 					/>
+					{errorMessage && (
+						<p className=" text-center mt-2 text-sm text-red-500">
+							{errorMessage}
+						</p>
+					)}
 					<SubmitButton text="Log In" />
 				</form>
 				<p className="block ps-2 text-[12px] text-slate-400 w-full text-center">

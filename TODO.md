@@ -12,8 +12,8 @@ Silahkan setup project aplikasi kamu:
   - [x] Halaman auth
     - [x] Register
     - [x] Login
-  - [ ] Halaman home
-    - [ ] Komponen Banner
+  - [x] Halaman home
+    - [x] Komponen Banner
     - [x] Komponen Detail info Ecommerce
     - [x] Komponen Featured Product (50-10 product) + “see-all”
   - [x] Halaman product
@@ -35,11 +35,11 @@ Silahkan setup project aplikasi kamu:
 - [x] Convert halaman-halaman dan komponen-komponen yang dibuat sebelumnya menjadi pages dan components pada NEXT.js:
   - [x] Halaman register: /register
   - [x] Halaman login: /login
-  - [ ] Halaman home: /
-    - [ ] Komponen Banner
+  - [x] Halaman home: /
+    - [x] Komponen Banner
     - [x] Komponen Detail info Ecommerce
     - [x] Komponen Featured Product (5-10 product) + “see-all”
-  - [ ] Halaman product: /products
+  - [x] Halaman product: /products
     - [x] Komponen List Product
     - [x] Komponen Search
     - [x] Komponent Pagination
@@ -58,7 +58,7 @@ Implementasikan CSR dan SSR pada pada halaman-halaman dan komponen-komponen yang
 
 - [x] Halaman register: /register
 - [x] Halaman login: /login
-- [ ] Halaman home: / (SSR)
+- [x] Halaman home: / (SSR)
 - [x] Halaman product: /products (CSR)
   - [x] Komponen List Product (CSR)
   - [x] Komponen Search (CSR)
@@ -85,7 +85,7 @@ Implementasikan CSR dan SSR pada pada halaman-halaman dan komponen-komponen yang
   - [x] Halaman login: /login
     - [x] email:string (validation: required, email format)
     - [x] password:string (validation: required)
-  - [ ] Halaman home: / (SSR)
+  - [x] Halaman home: / (SSR)
     - [x] Halaman product: /products
     - [x] Fitur List Product
     - [x] Fitur Search
@@ -123,4 +123,4 @@ Lakukan deployment pada project ini agar aplikasi bisa dilihat oleh user lain
 
 ### Buddy Session
 
-- [ ] Silahkan cek tugas/aplikasi yang kamu buat ke instruktur/buddy untuk memastikan aplikasi yang dibuat sudah sesuai requirement.
+- [x] Silahkan cek tugas/aplikasi yang kamu buat ke instruktur/buddy untuk memastikan aplikasi yang dibuat sudah sesuai requirement.

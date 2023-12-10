@@ -26,8 +26,8 @@ Pada challenge ini, kamu diminta untuk membuat aplikasi client-server dengan det
 
 - [x] Halaman Register
 - [x] Halaman Login
-- [ ] Halaman Home
-  - [ ] Banner Promo
+- [x] Halaman Home
+  - [x] Banner Promo
   - [x] Detail info Ecommerce
   - [x] Featured Product (5-10 product) + “see-all”
 - [x] Halaman Product

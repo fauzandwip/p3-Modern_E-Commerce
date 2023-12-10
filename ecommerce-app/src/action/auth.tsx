@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-const LogoutAction = async () => {
+export const LogoutAction = () => {
 	console.log('trigerr auth action');
 
 	cookies().get('Authorization')?.value && cookies().delete('Authorization');
@@ -11,4 +11,6 @@ const LogoutAction = async () => {
 	redirect('/login');
 };
 
-export default LogoutAction;
+export const isLogin = () => {
+	return cookies().get('Authorization')?.value ? true : false;
+};

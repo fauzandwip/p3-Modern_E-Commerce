@@ -26,18 +26,18 @@ Pada challenge ini, kamu diminta untuk membuat aplikasi client-server dengan det
 
 - [x] Halaman Register
 - [x] Halaman Login
-- [ ] Halaman Home
-  - [ ] Banner Promo
+- [x] Halaman Home
+  - [x] Banner Promo
   - [x] Detail info Ecommerce
   - [x] Featured Product (5-10 product) + “see-all”
-- [ ] Halaman Product
+- [x] Halaman Product
 - [x] List Product
   - [x] Fitur Search
   - [x] Fitur Pagination (menggunakan infinite scroll)
   - [x] Fitur Add to wishlist
-- [ ] Halaman Detail Product
-  - [ ] Fitur Add to wishlist
-  - [ ] Implementasi Meta Tag di Head sesuai detail product
+- [x] Halaman Detail Product
+  - [x] Fitur Add to wishlist
+  - [x] Implementasi Meta Tag di Head sesuai detail product
 - [x] Halaman Wishlist Product
   - [x] List Wishlist
   - [x] Fitur Remove Wishlist
@@ -47,8 +47,8 @@ Pada challenge ini, kamu diminta untuk membuat aplikasi client-server dengan det
 - [x] Fitur register
 - [x] Fitur login
 - [x] Fitur show list product
-- [ ] Fitur show detail product
+- [x] Fitur show detail product
 - [x] Fitur add to wishlist
 - [x] Fitur remove wishlist
-- [ ] Fitur search product berdasarkan nama (implement menerapkan debounce)
-- [ ] Fitur pagination (implement infinite scroll)
+- [x] Fitur search product berdasarkan nama (implement menerapkan debounce)
+- [x] Fitur pagination (implement infinite scroll)

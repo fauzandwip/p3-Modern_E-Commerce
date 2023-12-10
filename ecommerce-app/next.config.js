@@ -6,6 +6,10 @@ const nextConfig = {
 				protocol: 'https',
 				hostname: 'loremflickr.com',
 			},
+			{
+				protocol: 'https',
+				hostname: 'cf-img.fnatic.com',
+			},
 		],
 	},
 };

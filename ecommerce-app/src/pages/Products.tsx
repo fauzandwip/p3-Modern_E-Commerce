@@ -19,7 +19,7 @@ const Products = async () => {
 	// console.log(products, '>>> products component');
 
 	return (
-		<div className="w-full h-full bg-zinc-950 flex flex-col gap-10 justify-start items-start py-10 px-16">
+		<div className="w-full h-full bg-zinc-950 flex flex-col gap-10 justify-start items-start py-10 px-16 pt-24">
 			<div className="w-full flex justify-center">
 				<div className="w-1/2">
 					<SearchBar />

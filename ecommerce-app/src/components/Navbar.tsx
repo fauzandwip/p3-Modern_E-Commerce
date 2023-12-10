@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
 	return (
-		<div className="navbar bg-zinc-950">
+		<div className="navbar bg-zinc-950 fixed z-10">
 			<div className="flex-1">
 				<a className="btn btn-ghost text-slate-100 text-xl">E-Commerce</a>
 			</div>

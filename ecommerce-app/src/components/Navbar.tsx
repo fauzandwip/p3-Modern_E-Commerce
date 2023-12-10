@@ -1,23 +1,25 @@
 'use client';
 
-import Image from 'next/image';
 import LogoutAction from '../action/auth';
-import Link from 'next/link';
 
 const Navbar = () => {
 	return (
 		<div className="navbar bg-zinc-950 fixed z-10">
 			<div className="flex-1">
-				<a className="btn btn-ghost text-slate-100 text-xl">E-Commerce</a>
+				<a className="text-slate-100 text-xl px-4 cursor-pointer" href="/">
+					E-Commerce
+				</a>
 			</div>
 			<div className="flex-none gap-4">
-				<Link href={'/products'}>
+				{/* <Link href={'/products'}> */}
+				<a href="/products">
 					<div role="button" className="btn btn-ghost">
 						<p className="text-slate-100">product</p>
 					</div>
-				</Link>
+				</a>
+				{/* </Link> */}
 				<div className="">
-					<Link href={'/wishlist'}>
+					<a href="/wishlist">
 						<div role="button" className="btn btn-ghost btn-circle">
 							<div className="indicator">
 								<svg
@@ -33,7 +35,7 @@ const Navbar = () => {
 								{/* <span className="badge badge-sm indicator-item">8</span> */}
 							</div>
 						</div>
-					</Link>
+					</a>
 				</div>
 				<div className="dropdown dropdown-end">
 					<div

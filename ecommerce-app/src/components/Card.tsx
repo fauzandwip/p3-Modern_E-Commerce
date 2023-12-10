@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import ButtonWishlist from './ButtonWishlist';
 import { Product } from '@/db/models/products';
 import Image from 'next/image';
-import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
 
 type Props = {
@@ -23,8 +22,9 @@ const Card = ({ action, data, wishlistId }: Props) => {
 	const [buttonShow, setButtonShow] = useState(false);
 	const router = useRouter();
 
-	const onAddWishlist = async () => {
+	const onAddWishlist = async (e: MouseEvent) => {
 		console.log('add wishlist');
+		e.stopPropagation();
 
 		const response = await fetch(
 			`http://localhost:3000/api/wishlist/${data?._id}`,
@@ -35,10 +35,9 @@ const Card = ({ action, data, wishlistId }: Props) => {
 		console.log(await response.json());
 	};
 
-	const onRemoveWishlist = async () => {
+	const onRemoveWishlist = async (e: MouseEvent) => {
 		console.log('delete wishlist');
-
-		// console.log(data);
+		e.stopPropagation();
 		const response = await fetch(
 			`http://localhost:3000/api/wishlist/${wishlistId}`,
 			{
@@ -51,7 +50,10 @@ const Card = ({ action, data, wishlistId }: Props) => {
 	};
 
 	return (
-		<div className="w-full h-full flex flex-col">
+		<div
+			onClick={() => router.push(`/products/${data?.slug}`)}
+			className="w-full h-full flex flex-col cursor-pointer"
+		>
 			<div
 				onMouseOver={() => setButtonShow(true)}
 				onMouseLeave={() => setButtonShow(false)}

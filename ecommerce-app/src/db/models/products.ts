@@ -39,3 +39,13 @@ export const getProductById = async (id: string): Promise<Product> => {
 		.findOne({ _id: new ObjectId(id) })) as Product;
 	return products;
 };
+
+export const getProductBySlug = async (slug: string): Promise<Product> => {
+	console.log('>>> trigerr get productById mongodb');
+
+	const db = await getDB();
+	const products = (await db
+		.collection('Products')
+		.findOne({ slug })) as Product;
+	return products;
+};

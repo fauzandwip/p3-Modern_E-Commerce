@@ -7,7 +7,7 @@ const getDetailProduct = async () => {
 const DetailProductPage = ({ params }: { params: { slug: string } }) => {
 	console.log(params);
 
-	return <DetailProduct />;
+	return <DetailProduct slug={params?.slug} />;
 };
 
 export default DetailProductPage;

@@ -11,6 +11,7 @@ export const middleware = async (req: NextRequest) => {
 		console.log('>>> middleware inside');
 
 		const authorization = cookies().get('Authorization');
+		// console.log(authorization);
 
 		if (!authorization) {
 			return NextResponse.json(

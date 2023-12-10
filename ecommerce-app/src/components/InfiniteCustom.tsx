@@ -16,7 +16,7 @@ const InfiniteCustom = ({ products, search }: Props) => {
 
 	const getMoreProducts = async () => {
 		const response = await fetch(
-			`/api/products?limit=2&skip=${moreProducts.length}&search=${
+			`/api/products?limit=2&skip=${moreProducts?.length}&search=${
 				search ? search : ''
 			}`,
 			{
@@ -42,7 +42,7 @@ const InfiniteCustom = ({ products, search }: Props) => {
 
 	return (
 		<InfiniteScroll
-			dataLength={moreProducts.length}
+			dataLength={moreProducts?.length ?? 1}
 			next={getMoreProducts}
 			hasMore={hasMore}
 			loader={<h4>Loading...</h4>}
@@ -53,7 +53,7 @@ const InfiniteCustom = ({ products, search }: Props) => {
 			}
 			className="w-full grid grid-cols-4 justify-start gap-x-6 gap-y-8 py-10"
 		>
-			{moreProducts.map((data: Product, index: number) => {
+			{moreProducts?.map((data: Product, index: number) => {
 				return (
 					<div key={index} className=" aspect-[1/1.3]">
 						<Card action="add" data={data} />

@@ -1,7 +1,7 @@
 import ServerProtectedComponent from '@/components/ServerProtectedComponent';
 import React from 'react';
 
-const LayoutProducts = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
 			<ServerProtectedComponent>{children}</ServerProtectedComponent>
@@ -9,4 +9,4 @@ const LayoutProducts = ({ children }: { children: React.ReactNode }) => {
 	);
 };
 
-export default LayoutProducts;
+export default Layout;

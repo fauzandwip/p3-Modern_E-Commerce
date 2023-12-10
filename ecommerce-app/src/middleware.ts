@@ -7,7 +7,7 @@ export const middleware = async (req: NextRequest) => {
 
 	const url = req.url;
 
-	if (url.includes('/api/products') || url.includes('/api/wishlist')) {
+	if (url.includes('/api/wishlist')) {
 		console.log('>>> middleware inside');
 
 		const authorization = cookies().get('Authorization');

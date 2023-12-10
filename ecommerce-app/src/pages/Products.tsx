@@ -20,7 +20,7 @@ const Products = async ({ search }: { search: string }) => {
 	const products = await getAllProduct(search);
 	// console.log(search, '>>> search');
 
-	console.log(products?.data.length, '>>> products');
+	console.log(products?.data?.length, '>>> products');
 
 	return (
 		<div className="w-full min-h-screen bg-zinc-950 flex flex-col gap-10 justify-start items-start py-10 px-16 pt-24">

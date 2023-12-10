@@ -108,8 +108,8 @@ Implementasikan CSR dan SSR pada pada halaman-halaman dan komponen-komponen yang
 
 Implementasikan autentikasi pada aplikasi NEXT.js yang sudah dibuat dengan detail sebagai berikut:
 
-- [ ] Hanya user yang sudah login yang bisa menambahkan wishlist produk
-- [ ] Hanya user yang sudah login yang bisa menghapus wishlist produk
+- [x] Hanya user yang sudah login yang bisa menambahkan wishlist produk
+- [x] Hanya user yang sudah login yang bisa menghapus wishlist produk
 
 ## W2D4
 

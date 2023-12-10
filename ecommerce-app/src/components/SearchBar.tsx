@@ -1,4 +1,23 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useDebounce } from 'use-debounce';
+
 const SearchBar = () => {
+	const router = useRouter();
+	const [searchInput, setSearchInput] = useState('');
+	const [query] = useDebounce(searchInput, 500);
+
+	useEffect(() => {
+		console.log(query);
+		if (!query) {
+			router.push('/products');
+		} else {
+			router.push(`/products?search=${query}`);
+		}
+	}, [query, router]);
+
 	return (
 		<form className="w-full">
 			<div className="relative">
@@ -20,6 +39,8 @@ const SearchBar = () => {
 					</svg>
 				</div>
 				<input
+					value={searchInput}
+					onChange={(e) => setSearchInput(e.target.value)}
 					type="search"
 					id="default-search"
 					className="block w-full p-4 ps-14 text-lg border rounded-xl bg-zinc-950 border-gray-600 placeholder-gray-400 text-white focus:ring-slate-100 focus:border-slate-100"

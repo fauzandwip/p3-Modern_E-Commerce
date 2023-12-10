@@ -1,9 +1,13 @@
 import { Product, getAllProduct } from '@/db/models/products';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
 	try {
-		const products: Product[] = await getAllProduct();
+		const searchParams = req.nextUrl.searchParams;
+		const search = searchParams.get('search') as string;
+		console.log(search, '>>> query search');
+
+		const products: Product[] = await getAllProduct(search);
 		console.log('>>> GET products tigerr');
 
 		return NextResponse.json({

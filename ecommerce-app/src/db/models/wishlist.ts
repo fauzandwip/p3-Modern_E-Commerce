@@ -31,12 +31,23 @@ export const deleteWishlist = async (id: string) => {
 	const response = await db
 		.collection('Wishlist')
 		.deleteOne({ _id: new ObjectId(id) });
-	// console.log(response, 'response delete');
 
 	return response;
 };
 
-export const getWishlist = async (userId: string): Promise<WishlistModel[]> => {
+export const getWishlist = async (productId: string, userId: string) => {
+	const db = await getDB();
+	const response = await db.collection('Wishlist').findOne({
+		productId: new ObjectId(productId),
+		userId: new ObjectId(userId),
+	});
+
+	return response;
+};
+
+export const getWishlists = async (
+	userId: string
+): Promise<WishlistModel[]> => {
 	const db = await getDB();
 	const response = (await db
 		.collection('Wishlist')

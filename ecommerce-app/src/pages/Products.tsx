@@ -4,22 +4,26 @@ import SearchBar from '@/components/SearchBar';
 import { Product } from '@/db/models/products';
 import { cookies } from 'next/headers';
 
-const getAllProduct = async () => {
-	const products = await fetch(process.env.BASE_URL + '/api/products', {
-		cache: 'no-cache',
-		headers: {
-			Cookie: cookies().toString(),
-		},
-	});
+const getAllProduct = async (search: string) => {
+	const products = await fetch(
+		process.env.BASE_URL + `/api/products?search=${search ? search : ''}`,
+		{
+			cache: 'no-cache',
+			headers: {
+				Cookie: cookies().toString(),
+			},
+		}
+	);
 	return await products.json();
 };
 
-const Products = async () => {
-	const products = await getAllProduct();
+const Products = async ({ search }: { search: string }) => {
+	const products = await getAllProduct(search);
 	// console.log(products, '>>> products component');
+	console.log(search, '>>> search');
 
 	return (
-		<div className="w-full h-full bg-zinc-950 flex flex-col gap-10 justify-start items-start py-10 px-16 pt-24">
+		<div className="w-full min-h-screen h-full bg-zinc-950 flex flex-col gap-10 justify-start items-start py-10 px-16 pt-24">
 			<div className="w-full flex justify-center">
 				<div className="w-1/2">
 					<SearchBar />

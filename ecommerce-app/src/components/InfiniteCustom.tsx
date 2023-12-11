@@ -45,7 +45,7 @@ const InfiniteCustom = ({ products, search }: Props) => {
 			dataLength={moreProducts?.length ?? 1}
 			next={getMoreProducts}
 			hasMore={hasMore}
-			loader={<h4>Loading...</h4>}
+			loader={<span className="loading loading-ring loading-lg"></span>}
 			endMessage={
 				<p className="w-full col-span-4 pt-10 flex justify-center items-start">
 					<b className="text-xl">All products have been displayed</b>
